@@ -1,0 +1,19 @@
+<h1>Game of Thrones Houses</h1>
+
+
+<div id="houses">
+<% @houses.each do |house| %>
+<%= link_to house.name, house %><br />
+<% end %>
+</div>
+
+<br />
+
+<div id="actions">
+
+<button>
+  <%= link_to 'Add a House', new_house_path %>
+</button>
+
+
+</div>

@@ -1,0 +1,75 @@
+
+<img style="display:inline;" src=<%= @house.image %>/>
+
+
+<h1 style="display:inline;"><%= @house.name %></h1>
+
+<button><%= link_to "Edit", edit_house_path(@house.id) %></button>
+
+<div id="content-page">
+
+<p>
+"<%= @house.motto %>"<br /></p>
+By: <%= @house.author %>
+
+
+
+
+
+
+
+
+<h2>Members:</h2>
+
+<ol>
+
+  <% @members.each do |member| %>
+  <p><%= member.first_name %> <%= member.last_name %></p>
+  <% end %>
+
+</ol>
+
+
+<div id="form-content">
+
+
+  <%= form_for [@house, @member] do |f| %>
+
+
+<div class="errors">
+  <% if @member.errors.any? %>
+  <h2>Attention: Please fill out the entire form</h2>
+  <ul>
+    <% @member.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
+
+
+
+
+    <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div class="submit">
+<%= f.submit 'Submit' %>
+    </div><br />
+
+    <% end %>
+
+</div>
+
+
+
+
+
+</div>
